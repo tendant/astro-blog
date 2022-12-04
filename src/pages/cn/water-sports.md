@@ -1,10 +1,11 @@
 ---
-title = "旧金山湾区水上运动"
-author = ["Lei"]
-date = 2015-04-28
-tags = ["杂记", "水上运动"]
-categories = ["中文"]
-draft = false
+title: "旧金山湾区水上运动"
+layout: ../../layouts/Article.astro
+author: ["Lei"]
+date: 2015-04-28
+tags: ["杂记", "水上运动"]
+categories: ["中文"]
+draft: false
 ---
 旧金山湾区除了那些出名的景点外，还有很多好玩的水上运动。比如风帆（Windsurfing），风筝冲浪（Kiteboarding），冲浪（Surfing） 和帆船（Sailing）。这些运动和其他活动不同，都需要经过学习才能开始享受运动带来的乐趣。不过这些运动从岸上欣赏也挺不错的。
 
