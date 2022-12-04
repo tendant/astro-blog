@@ -13,7 +13,7 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <script>
+    <script type="text/javascript">
       let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
 
       updateMode()
@@ -47,8 +47,31 @@ const { title } = Astro.props;
         updateMode()
       }
     </script>
+
+    <script type="text/javascript">
+      function disableTransitionsTemporarily() {
+        document.documentElement.classList.add('[&_*]:!transition-none')
+        window.setTimeout(() => {
+          document.documentElement.classList.remove('[&_*]:!transition-none')
+        }, 0)
+      }
+
+      function toggleMode() {
+        disableTransitionsTemporarily()
+
+        let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+        let isSystemDarkMode = darkModeMediaQuery.matches
+        let isDarkMode = document.documentElement.classList.toggle('dark')
+
+        if (isDarkMode === isSystemDarkMode) {
+          delete window.localStorage.isDarkMode
+        } else {
+          window.localStorage.isDarkMode = isDarkMode
+        }
+      }
+    </script>
   </head>
-  <body>
+  <body class="flex h-full flex-col bg-zinc-50 bg-white dark:bg-black">
 
     <header class="pointer-events-none relative z-50 flex flex-col"
             style="height:var(--header-height);margin-bottom:var(--header-mb)">
@@ -115,7 +138,7 @@ const { title } = Astro.props;
                     </div>
                     <div class="flex justify-end md:flex-1">
                       <div class="pointer-events-auto">
-                        <button type="button" aria-label="Toggle dark mode"
+                        <button type="button" aria-label="Toggle dark mode" onClick="toggleMode()"
                                 class="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20">
                           <svg
                             viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
@@ -151,5 +174,31 @@ const { title } = Astro.props;
       <div class="flex-initial">
         <slot />
       </div>
+
+      <footer class="mt-32">
+        <div class="sm:px-8">
+          <div class="mx-auto max-w-7xl lg:px-8">
+            <div class="border-t border-zinc-100 pt-10 pb-16 dark:border-zinc-700/40">
+              <div class="relative px-4 sm:px-8 lg:px-12">
+                <div class="mx-auto max-w-2xl lg:max-w-5xl">
+                  <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+                    <div class="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
+                      <a class="transition hover:text-teal-500 dark:hover:text-teal-400" href="/about">About</a>
+                      <a class="transition hover:text-teal-500 dark:hover:text-teal-400" href="/projects">Projects</a>
+                      <a class="transition hover:text-teal-500 dark:hover:text-teal-400" href="/speaking">Speaking</a>
+                      <a class="transition hover:text-teal-500 dark:hover:text-teal-400" href="/uses">Uses</a>
+                    </div>
+                    <p class="text-sm text-zinc-400 dark:text-zinc-500">©
+                      <!-- -->2022
+                      <!-- --> Spencer Sharp. All rights reserved.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
     </body>
   </html>
