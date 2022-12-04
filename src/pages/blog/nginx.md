@@ -22,7 +22,7 @@ $ apt install nginx
 
 Create file /etc/nginx/conf.d/www.example.com.conf
 
-```nil
+```nginx
 server {
   listen 80;
   listen [::]:80;
@@ -40,7 +40,7 @@ server {
 
 Create file /etc/nginx/conf.d/app.example.com.conf
 
-```nil
+```nginx
 server {
     server_name app.example.com;  # Replace DOMAINNAME with the actual domain
     listen 80;
@@ -88,7 +88,7 @@ $ apt install python3-certbot-nginx
 
 Add below configuration to nginx server configuration
 
-```nil
+```nginx
 location ^~ /.well-known/acme-challenge {
     root /var/www/letscrypt/;
     default_type "text/plain";
@@ -109,7 +109,7 @@ If using cloudflare, add parameter "--preferred-challenges http-01"
 
 Generated nginx server configuration for SSL:
 
-```nil
+```nginx
 listen 443 ssl; # managed by Certbot
 ssl_certificate /etc/letsencrypt/live/recording.qa.wishlife.com/fullchain.pem; # managed by Certbot
 ssl_certificate_key /etc/letsencrypt/live/recording.qa.wishlife.com/privkey.pem; # managed by Certbot
@@ -119,7 +119,7 @@ ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
 If redirection is enabled:
 
-```nil
+```nginx
 server {
     if ($host = www.example.com) {
         return 301 https://$host$request_uri;
@@ -144,7 +144,7 @@ $ certbot certonly --webroot -w /var/www/www.example.com -d www.example.com
 
 <https://community.letsencrypt.org/t/how-to-nginx-configuration-to-enable-acme-challenge-support-on-all-http-virtual-hosts/5622>
 
-```nil
+```nginx
 
 #############################################################################
 # Configuration file for Let's Encrypt ACME Challenge location
