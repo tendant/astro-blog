@@ -2,7 +2,7 @@
 layout: ../../layouts/Article.astro
 title: "Nginx quickstart"
 author: ["Lei Wang"]
-date: 2018-10-03
+date: "2018-10-03"
 categories: ["Linux"]
 draft: false
 ---

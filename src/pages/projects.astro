@@ -1,0 +1,40 @@
+---
+import Blog from '../layouts/Blog.astro'
+
+const projects = [
+  {
+    name: "dbpro",
+    url: "https://github.com/tendant/dbpro",
+    description: "dbpro is a library which provides a set of utility function to simplify the task of generating data in database tables. "
+  },
+  {
+    name: "defsql",
+    url: "https://github.com/wishlife/defsql",
+    description: "A Clojure library designed to make your life easier with SQL Database using JDBC. "
+  },
+  {
+    name: "chi-demo",
+    url: "https://github.com/tendant/chi-demo",
+    description: "Demo project for go, go-chi and sqlc"
+  },
+  {
+    name: "graphql-clj",
+    url: "https://github.com/tendant/graphql-clj",
+    description: "A Clojure library that provides GraphQL implementation."
+  }
+]
+---
+
+<Blog>
+  <ul>
+    {projects.map((project) => {
+      return <li>
+               <a href={project.url}>
+                 <h2>{project.name}</h2>
+                 <p>{project.description}</p>
+                 <p>{project.url}</p>
+               </a>
+              </li>
+    })}
+  </ul>
+</Blog>

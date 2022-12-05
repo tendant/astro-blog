@@ -1,0 +1,21 @@
+---
+import Blog from '../layouts/Blog.astro';
+import { format, parseISO } from 'date-fns';
+
+const posts = await Astro.glob('../pages/blog/*.md')
+//
+---
+
+<Blog>
+  <ul>
+    {posts.map((post) => {
+      // var date = post.frontmatter.date ? post.frontmatter.date
+      return <li>
+               <h2 class="text-2xl">
+                 <time>{post.frontmatter.date}</time>
+                 <a href={post.url}>{post.frontmatter.title}</a>
+               </h2>
+             </li>
+    })}
+  </ul>
+</Blog>

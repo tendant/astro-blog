@@ -3,7 +3,7 @@ const {frontmatter} = Astro.props
 import { format, parseISO } from 'date-fns';
 const builtAt: Date = parseISO(frontmatter.date);
 // console.log("date:", buildAt)
-const builtAtFormatted = format(builtAt, 'MM/dd/yyyy');
+const builtAtFormatted = format(builtAt, 'MMM/dd/yyyy');
 ---
 
 <article>
