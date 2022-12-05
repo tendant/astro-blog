@@ -7,7 +7,7 @@ const posts = await Astro.glob('../pages/blog/*.md')
 ---
 
 <Blog>
-  <h1 class="text-4xl">Blog</h1>
+  <h1 class="text-4xl pb-8">Blog</h1>
   <ul>
     {posts.map((post) => {
       // var date = post.frontmatter.date ? post.frontmatter.date
