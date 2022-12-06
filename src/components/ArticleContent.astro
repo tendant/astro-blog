@@ -1,9 +1,13 @@
 ---
 const {frontmatter} = Astro.props
 import { format, parseISO } from 'date-fns';
-const builtAt: Date = parseISO(frontmatter.date);
-// console.log("date:", buildAt)
-const builtAtFormatted = format(builtAt, 'MMM/dd/yyyy');
+
+var dn = new Date();
+var ds = format(dn, 'yyyy-MM-dd')
+if (!!frontmatter.date) {
+  ds = format(parseISO(frontmatter.date), 'yyyy-MM-dd')
+}
+
 ---
 
 <article>
@@ -12,7 +16,7 @@ const builtAtFormatted = format(builtAt, 'MMM/dd/yyyy');
     <time datetime="2022-09-05" class="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500">
       <span class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500">
       </span>
-      <span class="ml-3">{builtAtFormatted}</span>
+      <span class="ml-3">{ds}</span>
     </time>
   </header>
   <div class="mt-8 prose  prose-slate  dark:prose-invert">
